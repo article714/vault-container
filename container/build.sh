@@ -4,7 +4,7 @@ export LANG=en_US.utf8
 
 # Add Vault user
 groupadd vault
-adduser --no-create-home --disabled-password --shell /usr/sbin/nologin --gecos "" vault vault
+adduser --no-create-home --disabled-password --shell /usr/sbin/nologin --gecos "" --ingroup vault vault
 
 # install gnupg to enable adding of hashicorp keys
 apt-get update
@@ -14,7 +14,7 @@ apt-get install -qy --no-install-recommends gnupg gnupg-agent curl software-prop
 curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
 apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 apt-get update
-apt-get install vault
+apt-get install -yq vault
 
 #--
 # Cleaning
