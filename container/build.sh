@@ -16,6 +16,9 @@ apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_re
 apt-get update
 apt-get install -yq vault
 
+# setup privileges for vault
+setcap cap_ipc_lock=+ep /usr/bin/vault
+
 #--
 # Cleaning
 apt-get -yq clean
