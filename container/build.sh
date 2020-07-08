@@ -8,7 +8,7 @@ adduser --no-create-home --disabled-password --shell /usr/sbin/nologin --gecos "
 
 # install gnupg to enable adding of hashicorp keys
 apt-get update
-apt-get install -qy --no-install-recommends gnupg gnupg-agent
+apt-get install -qy --no-install-recommends gnupg gnupg-agent curl software-properties-common
 
 # Install Vault
 curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
@@ -19,6 +19,7 @@ apt-get install vault
 #--
 # Cleaning
 apt-get -yq clean
+apt-get -yq remove software-properties-common
 apt-get -yq autoremove
 rm -rf /var/lib/apt/lists/*
 # cleanup useless cron jobs
