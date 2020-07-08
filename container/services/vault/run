@@ -1,0 +1,5 @@
+#!/bin/sh
+exec 2>&1
+
+# Run daemon
+exec chpst vault /usr/bin/vault server -config /container/config/vault.config >/var/log/vault.log
