@@ -25,15 +25,7 @@ build_image:
 
 test_image:
   stage: test
-  image:
-    name: article714/vault:${VAULT_IMAGE_VERSION}
-  services:
-    - name: article714/vault:${VAULT_IMAGE_VERSION}
-      alias: vault-srv
   tags:
     - docker
   script:
-    # wait for Ldap to be fully fit
-    - echo "TODO"
-    - id
-    - vault --version
+    - docker run --rm -ti --cap-add=IPC_LOCK -u vault article714/vault:${VAULT_IMAGE_VERSION} vault --version
