@@ -7,6 +7,7 @@ chown vault. /var/log/vault.log
 
 # setup dir
 chown vault /container/config/vault
+chown -R vault. /vault/file
 
 # Run daemon
 exec chpst -u vault /usr/bin/vault server -config /container/config/vault/vault.config
