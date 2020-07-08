@@ -5,8 +5,7 @@ stages:
   - cleanup
 
 variables:
-  VAULT_IMAGE_VERSION: "1.1.0"
-  DOCKER_REGISTRY_HOST: "892572o0.gra5.container-registry.ovh.net"
+  VAULT_IMAGE_VERSION: "0.1.0"
 
 # ------------------------------------------
 # Build
@@ -18,8 +17,8 @@ build_image:
   variables:
     BUILD_OPTS: "--force-rm --no-cache"
   script:
-    - echo "Building lease4/vault:${VAULT_IMAGE_VERSION}"
-    - docker build ${BUILD_OPTS} -t ${DOCKER_REGISTRY_HOST}/lease4/vault:${VAULT_IMAGE_VERSION} -t lease4/vault:${VAULT_IMAGE_VERSION} .
+    - echo "Building article714/vault:${VAULT_IMAGE_VERSION}"
+    - docker build ${BUILD_OPTS} -t ${DOCKER_REGISTRY_HOST}/article714/vault:${VAULT_IMAGE_VERSION} -t article714/vault:${VAULT_IMAGE_VERSION} .
 
 # ------------------------------------------
 # Tests
@@ -27,41 +26,14 @@ build_image:
 test_image:
   stage: test
   image:
-    name: lease4/vault:${VAULT_IMAGE_VERSION}
+    name: article714/vault:${VAULT_IMAGE_VERSION}
   services:
-    - name: lease4/vault:${VAULT_IMAGE_VERSION}
-      alias: ldap-srv
-      command: ["initpwd", "bonjour"]
+    - name: article714/vault:${VAULT_IMAGE_VERSION}
+      alias: vault-srv
   tags:
     - docker
   script:
     # wait for Ldap to be fully fit
-    - sleep 10
-    - python3 -m tests.runtests
-
-#------------------------------------------
-# Publish
-
-publish_image:
-  stage: publish
-  tags:
-    - shell
-  only:
-    refs:
-      - production
-  script:
-    - docker push ${DOCKER_REGISTRY_HOST}/lease4/vault:${VAULT_IMAGE_VERSION}
-#------------------------------------------
-# Cleanups
-
-#simple-prune-docker:
-#  stage: cleanup
-#  tags:
-#    - shell
-#  before_script:
-#    - echo "Prune docker"
-#  script:
-#    - docker system prune -f
-#    - docker volume prune -f
-#    - docker image prune -f
-#  when: always
+    - echo "TODO"
+    - id
+    - vault --version

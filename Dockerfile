@@ -1,4 +1,4 @@
-FROM vault:latest
+FROM article714/debian-based-container:latest
 LABEL maintainer="C. Guychard @ Article714"
 
 
