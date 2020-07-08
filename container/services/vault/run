@@ -1,5 +1,12 @@
 #!/bin/sh
 exec 2>&1
 
+# setup logs
+touch /var/log/vault.log
+chown vault. /var/log/vault.log
+
+# setup dir
+chown vault /container/config/vault
+
 # Run daemon
-exec chpst vault /usr/bin/vault server -config /container/config/vault/vault.config 2>&1 >/var/log/vault.log
+exec chpst -u vault /usr/bin/vault server -config /container/config/vault/vault.config
