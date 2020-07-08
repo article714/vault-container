@@ -2,4 +2,4 @@
 exec 2>&1
 
 # Run daemon
-exec chpst vault /usr/bin/vault server -config /container/config/vault/vault.config >/var/log/vault.log
+exec chpst vault /usr/bin/vault server -config /container/config/vault/vault.config 2>&1 >/var/log/vault.log
