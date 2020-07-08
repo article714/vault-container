@@ -26,6 +26,6 @@ build_image:
 test_image:
   stage: test
   tags:
-    - docker
+    - shell
   script:
     - docker run --rm -ti --cap-add=IPC_LOCK -u vault article714/vault:${VAULT_IMAGE_VERSION} vault --version
