@@ -18,7 +18,7 @@ build_image:
     BUILD_OPTS: "--force-rm --no-cache"
   script:
     - echo "Building article714/vault:${VAULT_IMAGE_VERSION}"
-    - docker build ${BUILD_OPTS} -t ${DOCKER_REGISTRY_HOST}/article714/vault:${VAULT_IMAGE_VERSION} -t article714/vault:${VAULT_IMAGE_VERSION} .
+    - docker build ${BUILD_OPTS} -t article714/vault:${VAULT_IMAGE_VERSION} .
 
 # ------------------------------------------
 # Tests
