@@ -1,0 +1,11 @@
+language: python
+sudo: false
+cache: pip
+
+services:
+  - docker
+
+script:
+  - export BUILD_OPTS='--force-rm --no-cache'
+  - export VAULT_IMAGE_VERSION='0.4.0'
+  - docker build ${BUILD_OPTS} -t article714/vault-container:${VAULT_IMAGE_VERSION} --build-arg VAULT_IMAGE_VERSION=${VAULT_IMAGE_VERSION} .
