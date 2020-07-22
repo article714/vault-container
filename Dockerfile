@@ -4,6 +4,7 @@ LABEL maintainer="C. Guychard @ Article714"
 
 # Generate locale C.UTF-8 for postgres and general locale data
 ENV LANG C.UTF-8
+ENV VAULT_X509_SUBJECT "/C=FR/ST=Brittany/L=Brest/O=Article714/OU=Secrets/CN=localhost"
 
 # Container tooling
 
