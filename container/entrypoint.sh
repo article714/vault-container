@@ -10,7 +10,7 @@ start() {
         chown vault.root /container/config/vault/certs
         cd /container/config/vault/certs
         if [ -n "${VAULT_X509_ALTNAMES}" ]; then
-            chpst -u vault openssl req -newkey rsa:4096 -days 1001 -nodes -x509 -subj ${VAULT_X509_SUBJECT} -addext "subjecAltName = ${VAULT_X509_ALTNAMES}" -keyout "vault.key" -out "vault.crt"
+            chpst -u vault openssl req -newkey rsa:4096 -days 1001 -nodes -x509 -subj ${VAULT_X509_SUBJECT} -addext "subjectAltName=${VAULT_X509_ALTNAMES}" -keyout "vault.key" -out "vault.crt"
         else
             chpst -u vault openssl req -newkey rsa:4096 -days 1001 -nodes -x509 -subj ${VAULT_X509_SUBJECT} -keyout "vault.key" -out "vault.crt"
         fi
