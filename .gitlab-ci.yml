@@ -5,7 +5,7 @@ stages:
   - cleanup
 
 variables:
-  VAULT_IMAGE_VERSION: "0.1.0"
+  VAULT_IMAGE_VERSION: "0.2.0"
 
 # ------------------------------------------
 # Build
